@@ -4,11 +4,11 @@ Build log for Property Reminders. The plan is `docs/spec/06-build-spec.md`.
 
 ## Milestones
 
-- M0 de-risk: partly done, two checks need Safi (see below)
+- M0 de-risk: partly done, two checks need Safi (see "Checks for Safi")
 - M1 foundation and pure logic: done, except the folder rename, which needs Safi
 - M2 index, scheduler and in-app notice: built, 15 boxes ticked, the rest need a person or a second device
-- M3 system notification and missed summary: not started
-- M4 settings tab: not started
+- M3 system notification and missed summary: built, not ticked. Every box needs a person to see or click the notification
+- M4 settings tab: built, 7 boxes ticked, 2 need a person
 - M5 release readiness: not started
 
 ## M0 results (2026-10-12)
@@ -97,10 +97,41 @@ Not checked, and left unticked:
 - FR-NOTIFY-02 and FR-OPEN-03: need a phone.
 - FR-OPEN-04: renaming a note after its notice appeared.
 
+## M3 and M4 results (2026-10-12)
+
+Built: the Electron notification path in `notify.ts` with the in-app notice as its fallback, `settings-tab.ts`, and `onExternalSettingsChange` in `main.ts`.
+
+Checked in the live Obsidian:
+
+- The settings tab shows scope, the folder list, the property rows, the status section and the test button.
+- Typing `CR` in the folder field suggested `CRM` and its subfolders. Choosing `CRM` and pressing Add added a row. Adding it again showed "This folder is already in the list." The remove button deleted a row. A folder that does not exist showed "(missing)".
+- A duplicate property showed "This property is already in the list." and was not saved. A new property `due` was saved to `data.json`.
+- Both empty-state lines appear.
+- Scope, folders and sources were unchanged after the plugin was disabled and enabled again.
+- The status section read "1 reminder scheduled" and listed a date-only note as "no time set".
+- "Send test notification" ran with no error and without falling back to the in-app notice.
+
+Not checked: whether the system notification was visible, and what a click on it does. Nobody was watching the screen.
+
+`npm run lint` reports no errors and one warning: `prefer-setting-definitions`. That API needs Obsidian 1.13.0, above this plugin's minimum of 1.8.7, so the warning stays.
+
+## Checks for Safi
+
+1. Click-to-focus (M0, FR-OPEN-01). Open **Settings → Community plugins → Property Reminders** and press **Send**. Switch to another app, then click the notification. Obsidian should come to the front.
+2. A real reminder (FR-NOTIFY-01). Add `reminder` to a note, two minutes ahead, switch to another app and wait. Click the notification: Obsidian should come forward with that note open.
+3. Minimised window (FR-OPEN-01). Repeat check 2 with Obsidian minimised.
+4. Blocked notifications (FR-SET-08). Turn notifications off for Obsidian in System Settings, press **Send**, and confirm nothing appears and no error shows.
+5. Restart (FR-MISSED-01). Set a reminder two minutes ahead, quit Obsidian, wait five minutes, reopen. One "Missed" notification should appear. Quit and reopen again: nothing.
+6. Sleep (FR-SCHED-06). Set a reminder a few minutes ahead, close the laptop lid past that time with Obsidian open, then open it. The reminder should fire within 30 seconds.
+7. Folder rename. Quit Obsidian, rename the plugin folder to `property-reminders`, reopen.
+
 ## Decisions and deviations
 
 - 2026-10-12: the GitHub repo is `Abdulkader-Safi/obsidian-reminder-plugin`, not `property-reminders` as first written. The plugin ID is unchanged. Spec stages 04 and 06 are updated.
 - 2026-10-12: commit after each step and push to `origin main`, at Safi's request. The spec said once per milestone with no push.
-- 2026-10-12: M1 starts before the M0 click check is confirmed. M1 is the rename and the pure logic, and neither depends on the answer. M3 does, and will not start without it.
+- 2026-10-12: M1 started before the M0 click check was confirmed. M1 is the rename and the pure logic, and neither depends on the answer.
 - 2026-10-12: `missed-modal.ts` and the summary notice were built in M2, not M3. Without them the scheduler had nowhere to send more than five late reminders.
 - 2026-10-12: `authorUrl` in the manifest is the GitHub profile `https://github.com/Abdulkader-Safi`. The spec did not name one.
+- 2026-10-12: an invalid property row is not saved at all, and the row keeps what was typed. Stage 5 said the saved setting keeps its last valid value. Stage 3 (FR-SET-05) says the source is not saved, and that is what is built.
+- 2026-10-12: M3 was built before the click check came back. The notification shows either way and the in-app notice is the fallback, so the code does not depend on the answer. The check is now easier to run from the real plugin (check 1 above).
+- 2026-10-12: clicking a note in the unreadable list opens it behind the settings window. Closing settings from a plugin needs an internal Obsidian API, which is avoided.

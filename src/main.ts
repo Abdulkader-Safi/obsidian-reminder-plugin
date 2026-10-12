@@ -2,6 +2,7 @@ import { Plugin, TFile, TFolder, type TAbstractFile } from 'obsidian';
 import { Notifier } from './notify.ts';
 import { ReminderIndex } from './reminder-index.ts';
 import { Scheduler } from './scheduler.ts';
+import { PropertyRemindersSettingTab } from './settings-tab.ts';
 import { readSettings, type Settings } from './settings.ts';
 
 export default class PropertyRemindersPlugin extends Plugin {
@@ -14,6 +15,7 @@ export default class PropertyRemindersPlugin extends Plugin {
 		this.index = new ReminderIndex(this.app, () => this.settings);
 		this.notifier = new Notifier(this.app);
 		const scheduler = new Scheduler(this, this.index, this.notifier);
+		this.addSettingTab(new PropertyRemindersSettingTab(this.app, this));
 
 		this.registerEvent(
 			this.app.metadataCache.on('changed', (file) => this.index.update(file)),
@@ -39,6 +41,12 @@ export default class PropertyRemindersPlugin extends Plugin {
 
 	onunload() {
 		this.notifier.closeAll();
+	}
+
+	/** A sync tool rewrote `data.json` while Obsidian was running. */
+	async onExternalSettingsChange() {
+		this.settings = readSettings(await this.loadData());
+		this.index.rebuild();
 	}
 
 	async saveSettings() {

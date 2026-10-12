@@ -320,7 +320,7 @@ Exit criteria: every box in section 9 is ticked or has a note in `PROGRESS.md` s
 - [x] **FR-SRC-08** Two sources giving the same minute on one note fire one notification.
 - [x] **FR-SCOPE-01** On a fresh install a valid reminder in any folder fires.
 - [x] **FR-SCOPE-02** With folders `Projects` and `Calendar`, `Projects/Client A/invoice.md` fires and `Archive/old.md` does not.
-- [ ] **FR-SCOPE-03** Removing a folder from scope stops its pending reminder at once. Adding it back arms reminders still in the future.
+- [x] **FR-SCOPE-03** Removing a folder from scope stops its pending reminder at once. Adding it back arms reminders still in the future.
 - [x] **FR-SCOPE-05** A `.canvas` or `.base` file never produces a reminder.
 - [ ] **FR-SCHED-02** A renamed note still fires under its new name. A note moved out of the chosen folders does not fire.
 - [x] **FR-SCHED-03** A note deleted before its time never fires.
@@ -338,12 +338,12 @@ Exit criteria: every box in section 9 is ticked or has a note in `PROGRESS.md` s
 - [x] **FR-MISSED-02** Twelve missed reminders give one notification reading "12 missed reminders", which opens a list of 12 notes with due times, oldest first. Choosing one opens it.
 - [ ] **FR-MISSED-03** A reminder that fired on the laptop still shows as missed on a phone sharing the vault, and the other way round.
 - [x] **FR-MISSED-04** Enabling the plugin in a vault with 50 past `reminder` values fires nothing.
-- [ ] **FR-SET-01** The settings tab exists and scope reads "Whole vault" on a fresh install.
-- [ ] **FR-SET-02** Typing `Pro` suggests `Projects`, choosing it adds a row, the remove button deletes it, and the same folder cannot be added twice.
-- [ ] **FR-SET-03** "Specific folders" with an empty list shows "No folders chosen. No reminders will fire."
-- [ ] **FR-SET-04** The default list holds `reminder`. Adding the pair `date` + `startTime` makes those notes fire, and removing it stops them.
+- [x] **FR-SET-01** The settings tab exists and scope reads "Whole vault" on a fresh install.
+- [x] **FR-SET-02** Typing `Pro` suggests `Projects`, choosing it adds a row, the remove button deletes it, and the same folder cannot be added twice.
+- [x] **FR-SET-03** "Specific folders" with an empty list shows "No folders chosen. No reminders will fire."
+- [x] **FR-SET-04** The default list holds `reminder`. Adding the pair `date` + `startTime` makes those notes fire, and removing it stops them.
 - [x] **FR-SET-05** An empty name, a duplicate source and a pair using one name twice each show an inline message and are not saved.
-- [ ] **FR-SET-06** Scope and sources are unchanged after an Obsidian restart.
+- [x] **FR-SET-06** Scope and sources are unchanged after an Obsidian restart.
 - [ ] **FR-SET-08** "Send test notification" shows a system notification within 2 seconds on desktop or a notice on mobile, and the text beside it says where to allow notifications.
 - [ ] **FR-SET-09** At 375 pt wide every control is reachable and no row is cut off.
 - [ ] **NFR-01** On a 16 GB M1 MacBook with 10,000 notes: first scan under 2 seconds and only after the workspace loads, plugin load under 50 ms, a due reminder within 10 seconds of its minute, a changed note reflected within 5 seconds.
