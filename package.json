@@ -1,6 +1,6 @@
 {
 	"name": "property-reminders",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Obsidian plugin: a notification when the date and time in a note property arrives.",
 	"main": "main.js",
 	"type": "module",

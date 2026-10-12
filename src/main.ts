@@ -9,13 +9,15 @@ export default class PropertyRemindersPlugin extends Plugin {
 	settings!: Settings;
 	index!: ReminderIndex;
 	notifier!: Notifier;
+	private settingTab!: PropertyRemindersSettingTab;
 
 	async onload() {
 		this.settings = readSettings(await this.loadData());
 		this.index = new ReminderIndex(this.app, () => this.settings);
 		this.notifier = new Notifier(this.app);
 		const scheduler = new Scheduler(this, this.index, this.notifier);
-		this.addSettingTab(new PropertyRemindersSettingTab(this.app, this));
+		this.settingTab = new PropertyRemindersSettingTab(this.app, this);
+		this.addSettingTab(this.settingTab);
 
 		this.registerEvent(
 			this.app.metadataCache.on('changed', (file) => this.index.update(file)),
@@ -47,6 +49,7 @@ export default class PropertyRemindersPlugin extends Plugin {
 	async onExternalSettingsChange() {
 		this.settings = readSettings(await this.loadData());
 		this.index.rebuild();
+		this.settingTab.refresh();
 	}
 
 	async saveSettings() {
@@ -73,5 +76,6 @@ export default class PropertyRemindersPlugin extends Plugin {
 		if (folders.join('\n') === this.settings.folders.join('\n')) return;
 		this.settings.folders = folders;
 		await this.saveSettings();
+		this.settingTab.refresh();
 	}
 }

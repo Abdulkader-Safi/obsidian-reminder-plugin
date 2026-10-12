@@ -113,7 +113,7 @@ Checked in the live Obsidian:
 
 Not checked: whether the system notification was visible, and what a click on it does. Nobody was watching the screen.
 
-`npm run lint` reports no errors and one warning: `prefer-setting-definitions`. That API needs Obsidian 1.13.0, above this plugin's minimum of 1.8.7, so the warning stays.
+`npm run lint` reported no errors and one warning, `prefer-setting-definitions`. Fixed in 1.0.1.
 
 ## M5 so far (2026-10-12)
 
@@ -131,6 +131,16 @@ Safi asked for release 1.0.0 so the plugin can be submitted to the community dir
 - Still not confirmed: that clicking a notification brings Obsidian to the front (FR-OPEN-01), and checks 3 to 7 below. Tested on macOS only. The performance run has not been done.
 - The local tag `1.0.0` came with the sample plugin's history (a 2020 commit by its author). It was never on this repo's remote. It was replaced with a tag on the release commit.
 - Known issue: a pair source such as `date` + `startTime` lists every note that has the day property without a readable time as unreadable. In a vault where `date` is a common property, that list gets noisy. Nothing fires wrongly.
+
+## Release 1.0.1 (2026-10-12)
+
+Obsidian's submission scan warned that the settings tab did not implement `getSettingDefinitions()`, so its settings would not appear in settings search on 1.13.0 and later.
+
+- The tab now describes its rows once and offers them two ways: through `getSettingDefinitions()` for Obsidian 1.13.0 and later, and drawn by hand in `display()` for older versions. `minAppVersion` stays 1.8.7.
+- Layout changes that came with it: each property row is named "Property 1", "Property 2" and so on, the folder list has a "Folders" heading, and the scheduled count and the unreadable list share one row.
+- Obsidian keeps the definitions it was last given, so the tab is refreshed when settings change outside it (a sync tool rewriting `data.json`, a chosen folder being renamed).
+- Checked in the live Obsidian 1.14.4: the declarative tab renders, adding and removing rows works, a duplicate property is rejected, a renamed folder shows under its new name, and an external settings change shows at once. The by-hand drawing was checked by calling it directly. It has not been run inside an Obsidian older than 1.13.0.
+- `npm run lint` now reports no errors and no warnings.
 
 ## Checks for Safi
 

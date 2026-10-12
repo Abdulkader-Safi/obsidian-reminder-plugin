@@ -1,7 +1,7 @@
 {
 	"id": "property-reminders",
 	"name": "Property Reminders",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"minAppVersion": "1.8.7",
 	"description": "Get a notification when the date and time in a note's property arrives, and open that note with one click.",
 	"author": "Abdulkader Safi",
