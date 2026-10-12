@@ -9,7 +9,7 @@ Build log for Property Reminders. The plan is `docs/spec/06-build-spec.md`.
 - M2 index, scheduler and in-app notice: built, 15 boxes ticked, the rest need a person or a second device
 - M3 system notification and missed summary: built, not ticked. Every box needs a person to see or click the notification
 - M4 settings tab: built, 7 boxes ticked, 2 need a person
-- M5 release readiness: not started
+- M5 release readiness: README and the test-vault script are written. The performance run and the manual pass need Safi
 
 ## M0 results (2026-10-12)
 
@@ -114,6 +114,14 @@ Checked in the live Obsidian:
 Not checked: whether the system notification was visible, and what a click on it does. Nobody was watching the screen.
 
 `npm run lint` reports no errors and one warning: `prefer-setting-definitions`. That API needs Obsidian 1.13.0, above this plugin's minimum of 1.8.7, so the warning stays.
+
+## M5 so far (2026-10-12)
+
+- `README.md` is written in full.
+- `tests/make-vault.mjs` writes a test vault. It was tried with 300 notes and refuses to write into a folder that is not empty.
+- Not done: the performance run. It needs the 10,000-note vault opened in Obsidian as its own vault, with the plugin copied in.
+
+To run it: `node tests/make-vault.mjs ~/Desktop/pr-perf-vault`, open that folder as a vault in Obsidian, copy `main.js` and `manifest.json` into its `.obsidian/plugins/property-reminders/` folder, and enable the plugin.
 
 ## Checks for Safi
 
