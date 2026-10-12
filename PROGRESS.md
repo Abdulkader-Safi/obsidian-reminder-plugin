@@ -9,7 +9,7 @@ Build log for Property Reminders. The plan is `docs/spec/06-build-spec.md`.
 - M2 index, scheduler and in-app notice: built, 15 boxes ticked, the rest need a person or a second device
 - M3 system notification and missed summary: built, not ticked. Every box needs a person to see or click the notification
 - M4 settings tab: built, 7 boxes ticked, 2 need a person
-- M5 release readiness: README and the test-vault script are written. The performance run and the manual pass need Safi
+- M5 release readiness: README and the test-vault script are written. 1.0.0 released at Safi's request with the performance run and most manual checks still open
 
 ## M0 results (2026-10-12)
 
@@ -122,6 +122,15 @@ Not checked: whether the system notification was visible, and what a click on it
 - Not done: the performance run. It needs the 10,000-note vault opened in Obsidian as its own vault, with the plugin copied in.
 
 To run it: `node tests/make-vault.mjs ~/Desktop/pr-perf-vault`, open that folder as a vault in Obsidian, copy `main.js` and `manifest.json` into its `.obsidian/plugins/property-reminders/` folder, and enable the plugin.
+
+## Release 1.0.0 (2026-10-12)
+
+Safi asked for release 1.0.0 so the plugin can be submitted to the community directory.
+
+- Safi saw the system notifications from four test notes in the `Reminder test` folder. FR-NOTIFY-01 is ticked on that.
+- Still not confirmed: that clicking a notification brings Obsidian to the front (FR-OPEN-01), and checks 3 to 7 below. Tested on macOS only. The performance run has not been done.
+- The local tag `1.0.0` came with the sample plugin's history (a 2020 commit by its author). It was never on this repo's remote. It was replaced with a tag on the release commit.
+- Known issue: a pair source such as `date` + `startTime` lists every note that has the day property without a readable time as unreadable. In a vault where `date` is a common property, that list gets noisy. Nothing fires wrongly.
 
 ## Checks for Safi
 

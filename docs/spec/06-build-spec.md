@@ -307,7 +307,7 @@ Exit criteria: every box in section 9 is ticked or has a note in `PROGRESS.md` s
 
 - [x] **FR-SRC-01** A note with `reminder: 2026-10-14T09:30` fires one notification at 09:30 on that day.
 - [ ] **FR-SCHED-01** A reminder added, changed or cleared while Obsidian runs is picked up with no restart, including a change made by a sync tool or another editor.
-- [ ] **FR-NOTIFY-01** On desktop a due reminder shows a system notification headed with the note's name, with "Reminder" and the time on the second line, while Obsidian is in the background.
+- [x] **FR-NOTIFY-01** On desktop a due reminder shows a system notification headed with the note's name, with "Reminder" and the time on the second line, while Obsidian is in the background.
 - [ ] **FR-OPEN-01** Clicking the system notification brings a minimised Obsidian to the front with the note visible.
 
 ### MVP (shippable v1)
