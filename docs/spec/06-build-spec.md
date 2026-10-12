@@ -305,44 +305,44 @@ Exit criteria: every box in section 9 is ticked or has a note in `PROGRESS.md` s
 
 ### POC (proves the core idea)
 
-- [ ] **FR-SRC-01** A note with `reminder: 2026-10-14T09:30` fires one notification at 09:30 on that day.
+- [x] **FR-SRC-01** A note with `reminder: 2026-10-14T09:30` fires one notification at 09:30 on that day.
 - [ ] **FR-SCHED-01** A reminder added, changed or cleared while Obsidian runs is picked up with no restart, including a change made by a sync tool or another editor.
 - [ ] **FR-NOTIFY-01** On desktop a due reminder shows a system notification headed with the note's name, with "Reminder" and the time on the second line, while Obsidian is in the background.
 - [ ] **FR-OPEN-01** Clicking the system notification brings a minimised Obsidian to the front with the note visible.
 
 ### MVP (shippable v1)
 
-- [ ] **FR-SRC-02** With a pair source `date` + `startTime`, a note with `date: 2026-10-14` and `startTime: 09:30` fires at 09:30 on that day.
+- [x] **FR-SRC-02** With a pair source `date` + `startTime`, a note with `date: 2026-10-14` and `startTime: 09:30` fires at 09:30 on that day.
 - [ ] **FR-SRC-03** With sources `reminder` and `due`, each fires at its own time, and a note carrying both at different times fires twice.
-- [ ] **FR-SRC-04** A day with no time (single or pair) never fires and is counted as unreadable.
-- [ ] **FR-SRC-05** `YYYY-MM-DDTHH:mm`, the same with `:ss`, and `YYYY-MM-DD` with `HH:mm` in a pair all fire at the stated minute. `tomorrow 9am` fires nothing and is counted as unreadable.
-- [ ] **FR-SRC-07** With the source `reminder`, a note using `Reminder:` fires.
-- [ ] **FR-SRC-08** Two sources giving the same minute on one note fire one notification.
-- [ ] **FR-SCOPE-01** On a fresh install a valid reminder in any folder fires.
-- [ ] **FR-SCOPE-02** With folders `Projects` and `Calendar`, `Projects/Client A/invoice.md` fires and `Archive/old.md` does not.
+- [x] **FR-SRC-04** A day with no time (single or pair) never fires and is counted as unreadable.
+- [x] **FR-SRC-05** `YYYY-MM-DDTHH:mm`, the same with `:ss`, and `YYYY-MM-DD` with `HH:mm` in a pair all fire at the stated minute. `tomorrow 9am` fires nothing and is counted as unreadable.
+- [x] **FR-SRC-07** With the source `reminder`, a note using `Reminder:` fires.
+- [x] **FR-SRC-08** Two sources giving the same minute on one note fire one notification.
+- [x] **FR-SCOPE-01** On a fresh install a valid reminder in any folder fires.
+- [x] **FR-SCOPE-02** With folders `Projects` and `Calendar`, `Projects/Client A/invoice.md` fires and `Archive/old.md` does not.
 - [ ] **FR-SCOPE-03** Removing a folder from scope stops its pending reminder at once. Adding it back arms reminders still in the future.
-- [ ] **FR-SCOPE-05** A `.canvas` or `.base` file never produces a reminder.
+- [x] **FR-SCOPE-05** A `.canvas` or `.base` file never produces a reminder.
 - [ ] **FR-SCHED-02** A renamed note still fires under its new name. A note moved out of the chosen folders does not fire.
-- [ ] **FR-SCHED-03** A note deleted before its time never fires.
+- [x] **FR-SCHED-03** A note deleted before its time never fires.
 - [ ] **FR-SCHED-04** A fired reminder does not fire again after a restart or a body edit. Changing it to a new future time fires once more.
 - [ ] **FR-SCHED-05** A time already past when typed fires nothing. Adding a source over 300 old dates fires nothing.
 - [ ] **FR-SCHED-06** A reminder due while the laptop sleeps with Obsidian open fires within 30 seconds of waking, marked as missed.
 - [ ] **FR-NOTIFY-02** On mobile a due reminder shows an in-app notice that is still on screen 60 seconds later.
 - [ ] **FR-NOTIFY-03** When the system notification is not supported or fails to show, the in-app notice appears, and the first one of the session is followed by a notice saying system notifications are unavailable.
-- [ ] **FR-NOTIFY-04** Three notes due in the same minute give three notifications, each opening its own note.
+- [x] **FR-NOTIFY-04** Three notes due in the same minute give three notifications, each opening its own note.
 - [ ] **FR-NOTIFY-05** A note named `اجتماع العميل.md` shows that exact text as the heading.
-- [ ] **FR-OPEN-02** With note A being edited, clicking a notification for note B leaves A in its tab and shows B in another. If B is already open, its tab is shown.
+- [x] **FR-OPEN-02** With note A being edited, clicking a notification for note B leaves A in its tab and shows B in another. If B is already open, its tab is shown.
 - [ ] **FR-OPEN-03** Tapping the in-app notice opens the note.
 - [ ] **FR-OPEN-04** A note renamed after its notification appeared still opens on click. A deleted one shows "Note not found: <name>".
 - [ ] **FR-MISSED-01** Quit at 09:00 with a reminder at 09:30, start at 11:00: one "Missed" notification within 10 seconds of the workspace loading. Restart: nothing.
-- [ ] **FR-MISSED-02** Twelve missed reminders give one notification reading "12 missed reminders", which opens a list of 12 notes with due times, oldest first. Choosing one opens it.
+- [x] **FR-MISSED-02** Twelve missed reminders give one notification reading "12 missed reminders", which opens a list of 12 notes with due times, oldest first. Choosing one opens it.
 - [ ] **FR-MISSED-03** A reminder that fired on the laptop still shows as missed on a phone sharing the vault, and the other way round.
-- [ ] **FR-MISSED-04** Enabling the plugin in a vault with 50 past `reminder` values fires nothing.
+- [x] **FR-MISSED-04** Enabling the plugin in a vault with 50 past `reminder` values fires nothing.
 - [ ] **FR-SET-01** The settings tab exists and scope reads "Whole vault" on a fresh install.
 - [ ] **FR-SET-02** Typing `Pro` suggests `Projects`, choosing it adds a row, the remove button deletes it, and the same folder cannot be added twice.
 - [ ] **FR-SET-03** "Specific folders" with an empty list shows "No folders chosen. No reminders will fire."
 - [ ] **FR-SET-04** The default list holds `reminder`. Adding the pair `date` + `startTime` makes those notes fire, and removing it stops them.
-- [ ] **FR-SET-05** An empty name, a duplicate source and a pair using one name twice each show an inline message and are not saved.
+- [x] **FR-SET-05** An empty name, a duplicate source and a pair using one name twice each show an inline message and are not saved.
 - [ ] **FR-SET-06** Scope and sources are unchanged after an Obsidian restart.
 - [ ] **FR-SET-08** "Send test notification" shows a system notification within 2 seconds on desktop or a notice on mobile, and the text beside it says where to allow notifications.
 - [ ] **FR-SET-09** At 375 pt wide every control is reachable and no row is cut off.

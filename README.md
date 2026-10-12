@@ -1,4 +1,4 @@
-# Property Reminders
+# Property reminders
 
 An Obsidian plugin that sends a notification when the date and time in a note's property arrives, and opens that note when you click it.
 
