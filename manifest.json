@@ -1,11 +1,10 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
+	"id": "property-reminders",
+	"name": "Property Reminders",
 	"version": "1.0.0",
-	"minAppVersion": "1.0.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"minAppVersion": "1.8.7",
+	"description": "Get a notification when the date and time in a note's property arrives, and open that note with one click.",
+	"author": "Abdulkader Safi",
+	"authorUrl": "https://github.com/Abdulkader-Safi",
 	"isDesktopOnly": false
 }
